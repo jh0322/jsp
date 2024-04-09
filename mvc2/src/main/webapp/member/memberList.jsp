@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
+<script>
+    function deleteFn(num) {
+        location.href = "memberDelete.jsp?num="+num;
+    }
+</script>
 <table class="table table-bordered">
     <tr>
         <td>번호</td>
@@ -25,14 +30,16 @@
     <% for (MemberVO vo : list) { %>
     <tr>
         <td><%=vo.getNum()%></td>
-        <td><%=vo.getId()%></td>
+        <td><a href="memberContent.jsp?num=<%=vo.getNum()%>"><%=vo.getId()%></a></td>
         <td><%=vo.getPassword()%></td>
         <td><%=vo.getName()%></td>
         <td><%=vo.getAge()%></td>
         <td><%=vo.getEmail()%></td>
         <td><%=vo.getPhone()%></td>
+        <td><input type="button" value="삭제" class="btn btn-danger" onclick="deleteFn(<%=vo.getNum()%>)"></td>
     </tr>
     <% } %>
+    <td colspan="8" align="right"><input type="button" value="회원가입" class="btn btn-primary" onclick="location.href='memberRegister.html'"></td>
 </table>
 </body>
 </html>
